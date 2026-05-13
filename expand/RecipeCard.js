@@ -18,33 +18,46 @@ class RecipeCard extends HTMLElement {
 
 		// A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made (copy everything INSIDE the <style> tag>)
 		style.textContent = `
-			* {
-				font-family: sans-serif;
-			}
+            :host {
+                --font-family: sans-serif;
+                --card-border: #ccc;
+                --card-radius: 10px;
+                --card-padding: 16px;
+                --card-max-width: 300px;
 
-			article {
-				display: grid;
-				grid-template-columns: 1fr;
-				border: 1px solid #ccc;
-				border-radius: 10px;
-				padding: 16px;
-				max-width: 300px;
-			}
+                --image-radius: 10px;
 
-			img {
-				width: 100%;
-				border-radius: 10px;
-			}
+                --link-color: black;
+                --title-size: 1.2rem;
+            }
 
-			h2 {
-				font-size: 1.2rem;
-			}
+            * {
+                font-family: var(--font-family);
+            }
 
-			a {
-				text-decoration: none;
-				color: black;
-			}
-		`;
+            article {
+                display: grid;
+                grid-template-columns: 1fr;
+                border: 1px solid var(--card-border);
+                border-radius: var(--card-radius);
+                padding: var(--card-padding);
+                max-width: var(--card-max-width);
+            }
+
+            img {
+                width: 100%;
+                border-radius: var(--image-radius);
+            }
+
+            h2 {
+                font-size: var(--title-size);
+            }
+
+            a {
+                text-decoration: none;
+                color: var(--link-color);
+            }
+        `;
 
 		// A5. TODO - Append the <style> and <article> elements to the Shadow DOM
 		this.shadowRoot.append(style, article);
